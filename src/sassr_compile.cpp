@@ -8,6 +8,43 @@ int set_options(Sass_Options* ctx_opt, List opt_list) {
   if (opt_list.containsElementNamed("precision")) {
     sass_option_set_precision(ctx_opt, as<int>(opt_list["precision"]));
   }
+
+  if (opt_list.containsElementNamed("output_style")) {
+    sass_option_set_output_style(ctx_opt, static_cast<Sass_Output_Style>(as<int>(opt_list["output_style"])));
+  }
+
+  if (opt_list.containsElementNamed("source_comments")) {
+    sass_option_set_source_comments(ctx_opt, as<bool>(opt_list["source_comments"]));
+  }
+
+  if (opt_list.containsElementNamed("source_map_embed")) {
+    sass_option_set_source_map_embed(ctx_opt, as<bool>(opt_list["source_map_embed"]));
+  }
+
+  if (opt_list.containsElementNamed("source_map_contents")) {
+    sass_option_set_source_map_contents(ctx_opt, as<bool>(opt_list["source_map_contents"]));
+  }
+
+  if (opt_list.containsElementNamed("source_map_file_urls")) {
+    sass_option_set_source_map_file_urls(ctx_opt, as<bool>(opt_list["source_map_file_urls"]));
+  }
+
+  if (opt_list.containsElementNamed("omit_source_map_url")) {
+    sass_option_set_omit_source_map_url(ctx_opt, as<bool>(opt_list["omit_source_map_url"]));
+  }
+
+  if (opt_list.containsElementNamed("is_indented_syntax_src")) {
+    sass_option_set_is_indented_syntax_src(ctx_opt, as<bool>(opt_list["is_indented_syntax_src"]));
+  }
+
+  if (opt_list.containsElementNamed("indent")) {
+    sass_option_set_indent(ctx_opt, as<const char*>(opt_list["indent"]));
+  }
+
+  if (opt_list.containsElementNamed("linefeed")) {
+    sass_option_set_linefeed(ctx_opt, as<const char*>(opt_list["linefeed"]));
+  }
+
   return 0;
 }
 
