@@ -4,7 +4,7 @@
 
 using namespace Rcpp;
 
-int set_options(Sass_Options* ctx_opt, List opt_list) {
+void set_options(Sass_Options* ctx_opt, List opt_list) {
   if (opt_list.containsElementNamed("precision")) {
     sass_option_set_precision(ctx_opt, as<int>(opt_list["precision"]));
   }
@@ -44,10 +44,15 @@ int set_options(Sass_Options* ctx_opt, List opt_list) {
   if (opt_list.containsElementNamed("linefeed")) {
     sass_option_set_linefeed(ctx_opt, as<const char*>(opt_list["linefeed"]));
   }
-
-  return 0;
 }
 
+//' Compile Sass file into CSS
+//'
+//' This function compiles a file containing Sass code.
+//'
+//' @param filename A Sass file (.scss, .sass)
+//' @param options A list containing options for libsass
+//' @export
 // [[Rcpp::export]]
 NumericVector sass_compile_file(const char* filename, List options = R_NilValue) {
   struct Sass_File_Context* file_ctx = sass_make_file_context(filename);
@@ -70,6 +75,13 @@ NumericVector sass_compile_file(const char* filename, List options = R_NilValue)
   return NumericVector::create(0, 1);
 }
 
+//' Compile Character Vector to CSS
+//'
+//' This function compiles character vectors containing Sass code.
+//'
+//' @param strings A character vector of Sass
+//' @param options A list containing options for libsass
+//' @export
 // [[Rcpp::export]]
 CharacterVector sass_compile_string(std::vector<std::string> strings, List options = R_NilValue) {
   CharacterVector compiled_strings(strings.size());
