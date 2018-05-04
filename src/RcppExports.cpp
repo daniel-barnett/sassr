@@ -6,20 +6,33 @@
 using namespace Rcpp;
 
 // sass_compile_file
-NumericVector sass_compile_file(CharacterVector filename_arg, List options);
-RcppExport SEXP _sassr_sass_compile_file(SEXP filename_argSEXP, SEXP optionsSEXP) {
+NumericVector sass_compile_file(const char* filename, List options);
+RcppExport SEXP _sassr_sass_compile_file(SEXP filenameSEXP, SEXP optionsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type filename_arg(filename_argSEXP);
+    Rcpp::traits::input_parameter< const char* >::type filename(filenameSEXP);
     Rcpp::traits::input_parameter< List >::type options(optionsSEXP);
-    rcpp_result_gen = Rcpp::wrap(sass_compile_file(filename_arg, options));
+    rcpp_result_gen = Rcpp::wrap(sass_compile_file(filename, options));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sass_compile_string
+CharacterVector sass_compile_string(std::vector<std::string> strings, List options);
+RcppExport SEXP _sassr_sass_compile_string(SEXP stringsSEXP, SEXP optionsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type strings(stringsSEXP);
+    Rcpp::traits::input_parameter< List >::type options(optionsSEXP);
+    rcpp_result_gen = Rcpp::wrap(sass_compile_string(strings, options));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_sassr_sass_compile_file", (DL_FUNC) &_sassr_sass_compile_file, 2},
+    {"_sassr_sass_compile_string", (DL_FUNC) &_sassr_sass_compile_string, 2},
     {NULL, NULL, 0}
 };
 
