@@ -54,7 +54,7 @@ void set_options(Sass_Options* ctx_opt, List opt_list) {
 //' @param options A list containing options for libsass
 //' @export
 // [[Rcpp::export]]
-NumericVector sass_compile_file(const char* filename, List options = R_NilValue) {
+std::string sass_compile_file(const char* filename, List options = R_NilValue) {
   struct Sass_File_Context* file_ctx = sass_make_file_context(filename);
   struct Sass_Context* ctx = sass_file_context_get_context(file_ctx);
   struct Sass_Options* ctx_opt = sass_context_get_options(ctx);
@@ -65,14 +65,14 @@ NumericVector sass_compile_file(const char* filename, List options = R_NilValue)
 
   int status = sass_compile_file_context(file_ctx);
 
-  if (status == 0)
-    puts(sass_context_get_output_string(ctx));
-  else
+  if (status > 0)
     puts(sass_context_get_error_message(ctx));
+
+  std::string compiled_string = sass_context_get_output_string(ctx);
 
   sass_delete_file_context(file_ctx);
 
-  return NumericVector::create(0, 1);
+  return compiled_string;
 }
 
 //' Compile Character Vector to CSS

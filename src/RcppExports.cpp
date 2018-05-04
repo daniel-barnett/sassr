@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // sass_compile_file
-NumericVector sass_compile_file(const char* filename, List options);
+std::string sass_compile_file(const char* filename, List options);
 RcppExport SEXP _sassr_sass_compile_file(SEXP filenameSEXP, SEXP optionsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
