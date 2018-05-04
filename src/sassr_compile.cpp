@@ -4,13 +4,23 @@
 
 using namespace Rcpp;
 
+Sass_Output_Style conv_output_style(std::string style_str) {
+  if (style_str == "nested")     return SASS_STYLE_NESTED;
+  if (style_str == "expanded")   return SASS_STYLE_EXPANDED;
+  if (style_str == "compact")    return SASS_STYLE_COMPACT;
+  if (style_str == "compressed") return SASS_STYLE_COMPRESSED;
+
+  warning("Unrecognized `output_style`. Defaulting to 'nested' style");
+  return SASS_STYLE_NESTED;
+}
+
 void set_options(Sass_Options* ctx_opt, List opt_list) {
   if (opt_list.containsElementNamed("precision")) {
     sass_option_set_precision(ctx_opt, as<int>(opt_list["precision"]));
   }
 
   if (opt_list.containsElementNamed("output_style")) {
-    sass_option_set_output_style(ctx_opt, static_cast<Sass_Output_Style>(as<int>(opt_list["output_style"])));
+    sass_option_set_output_style(ctx_opt, conv_output_style(as<std::string>(opt_list["output_style"])));
   }
 
   if (opt_list.containsElementNamed("source_comments")) {
@@ -65,8 +75,11 @@ std::string sass_compile_file(const char* filename, List options = R_NilValue) {
 
   int status = sass_compile_file_context(file_ctx);
 
-  if (status > 0)
-    puts(sass_context_get_error_message(ctx));
+  if (status > 0) {
+    std::string error_msg = sass_context_get_error_message(ctx);
+    sass_delete_file_context(file_ctx);
+    stop(error_msg);
+  }
 
   std::string compiled_string = sass_context_get_output_string(ctx);
 
@@ -87,6 +100,7 @@ CharacterVector sass_compile_string(std::vector<std::string> strings, List optio
   CharacterVector compiled_strings(strings.size());
 
   for (int i = 0; i < strings.size(); i++) {
+    // Need to convert from std::string to char* for sass_make_data_context
     char* curr_string = strdup(strings[i].c_str());
 
     struct Sass_Data_Context* data_ctx = sass_make_data_context(curr_string);
