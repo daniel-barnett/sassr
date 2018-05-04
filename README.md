@@ -1,2 +1,2 @@
-# sassR
-Compile Sass from R: R bindings to libsass
+# sassr
+Sass Compiler for R: R bindings to libsass
