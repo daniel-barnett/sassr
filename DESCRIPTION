@@ -9,4 +9,5 @@ Description: Compile Sass from R using libsass bindings.
 License: GPL (>= 3)
 Imports: Rcpp (>= 0.12.16)
 LinkingTo: Rcpp
+SystemRequirements: GNU make
 RoxygenNote: 6.0.1
