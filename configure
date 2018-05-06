@@ -1,7 +1,1 @@
-BUILD="shared" make -C ./src/libsass -j5
-
-if [ ! -d "./lib/" ]; then
-  mkdir ./lib/
-fi
-
-mv ./src/libsass/lib/libsass.so ./lib/libsass.so
+BUILD="static" make -C ./src/libsass
