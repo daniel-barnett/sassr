@@ -4,7 +4,7 @@ Title: Sass Compiler for R
 Version: 1.0
 Date: 2018-05-04
 Author: Daniel Barnett
-Maintainer: Daniel Barnett <your@email.com>
+Maintainer: Daniel Barnett <dbar344@aucklanduni.ac.nz>
 Description: Compile Sass from R using libsass bindings.
 License: GPL (>= 3)
 Imports: Rcpp (>= 0.12.16)

@@ -14,7 +14,7 @@
 #' }
 #'
 #' @docType package
-#' @author Daniel Barnett <your@email.com>
+#' @author Daniel Barnett <dbar344@aucklanduni.ac.nz>
 #' @import Rcpp
 #' @importFrom Rcpp evalCpp
 #' @useDynLib sassr
