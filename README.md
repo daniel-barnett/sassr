@@ -1,7 +1,7 @@
 # sassr
 [![Build Status](https://travis-ci.org/daniel-barnett/sassr.svg?branch=master)](https://travis-ci.org/daniel-barnett/sassr)
 
-Sass Compiler for R: R bindings to libsass. 
+Sass Compiler for R: R bindings to [libsass](https://github.com/sass/libsass). 
 
 ## Installation
 
