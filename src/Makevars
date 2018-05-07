@@ -1,2 +1,10 @@
 PKG_CPPFLAGS = -I../inst/include/ -I../inst/include/libsass/ -I../inst/include/libsass/sass/
 PKG_LIBS = -L./libsass/lib/ -lsass
+
+SOURCES= sassr_compile.cpp RcppExports.cpp
+OBJECTS= $(SOURCES:.cpp=.o) libsass/lib/libsass.a
+
+all: $(SHLIB) $(OBJECTS)
+
+libsass/lib/libsass.a:
+	($(MAKE) -C libsass CC="$(CC)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" AR="$(AR)" RANLIB="$(RANLIB)" CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) -I./include/ -std=c++11")
