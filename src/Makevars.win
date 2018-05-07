@@ -7,4 +7,4 @@ OBJECTS= $(SOURCES:.cpp=.o) libsass/lib/libsass.a
 all: $(SHLIB) $(OBJECTS)
 
 libsass/lib/libsass.a:
-	BUILD="static" $(MAKE) -C libsass CC="$(CC)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" AR="$(AR)" RANLIB="$(RANLIB)" CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) -I./include/ -std=c++11 -fPIC"
+	BUILD="static" $(MAKE) -C libsass CC="$(CC)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" AR="$(AR)" RANLIB="$(RANLIB)" CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) -I./include/ -std=c++11"
