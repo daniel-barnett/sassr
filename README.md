@@ -13,7 +13,7 @@ devtools::install_github("daniel-barnett/sassr")
 ```
 ## Purpose
 
-Sass (Syntactically Awesome StyleSheets) is a powerful stylesheet preprocessor that compiles to standard CSS and provides features missing in regular CSS such as variables, inheritance, mix-ins, and functions. As Sass compiles into standard CSS, using Sass will not affect the compatibility of your stylesheets for end users --- it simply makes certain tasks easier for the developer. sassr makes it easy to use the power of Sass in R and Shiny without the need for downloading or running external tools each time you run a Shiny server. 
+[Sass (Syntactically Awesome StyleSheets)](https://sass-lang.com/) is a powerful stylesheet preprocessor that compiles to standard CSS and provides features missing in regular CSS such as variables, inheritance, mix-ins, and functions. As Sass compiles into standard CSS, using Sass will not affect the compatibility of your stylesheets for end users --- it simply makes certain tasks easier for the developer. sassr makes it easy to use the power of Sass in R and Shiny without the need for downloading or running external tools each time you run a Shiny server. To learn Sass, please use the official [Sass Basics guide](https://sass-lang.com/guide).
 
 ## Usage
 
