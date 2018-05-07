@@ -43,6 +43,7 @@ sass_compile_string(c(
 sass_compile_file("test.scss")
 
 # sassr can also compile "indented syntax" Sass files
+sass_compile_file("test.sass")
 ```
 
 ### Output options
@@ -52,6 +53,11 @@ sassr supports most options provided by the libsass library, including output st
 ```{r}
 # The "compressed" output style is useful for production as it minifies your CSS
 sass_compile_string("foo { margin: 5px * 4; }", options = list(output_style = "compressed"))
+
+# Other output styles:
+sass_compile_string("foo { margin: 5px * 4; }", options = list(output_style = "nested"))
+sass_compile_string("foo { margin: 5px * 4; }", options = list(output_style = "expanded"))
+sass_compile_string("foo { margin: 5px * 4; }", options = list(output_style = "compact"))
 ```
 
 ### Shiny integration
@@ -60,7 +66,8 @@ sassr integrates seamlessly into a Shiny workflow by providing the `shiny_sass()
 
 ```{r}
 # in a ui.R file:
-shiny_sass(sass_compile_file("styles.scss"))
+# shiny_sass(sass_compile_file("styles.scss"))
+# (not pushed yet - but the following works right now)
 
 # this is equivalent to
 # tags$head(
