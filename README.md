@@ -131,3 +131,7 @@ sassr integrates seamlessly into a Shiny workflow by providing the `shiny_sass()
 #   )
 # )
 ```
+
+## Community guidelines
+
+The Sass community guidelines can be found on the [official Sass website](https://sass-lang.com/community-guidelines). These guidelines also apply to sassr if you'd like to contribute!
