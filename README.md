@@ -1,5 +1,6 @@
 # sassr
 [![Build Status](https://travis-ci.org/daniel-barnett/sassr.svg?branch=master)](https://travis-ci.org/daniel-barnett/sassr)
+[![Build status](https://ci.appveyor.com/api/projects/status/qqhn4cq77egjgg9p/branch/master?svg=true)](https://ci.appveyor.com/project/daniel-barnett/sassr/branch/master)
 
 Sass Compiler for R: R bindings to [libsass](https://github.com/sass/libsass). 
 
